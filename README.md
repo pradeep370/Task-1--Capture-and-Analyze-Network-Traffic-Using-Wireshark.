@@ -81,7 +81,12 @@ Completed hands‑on packet capture and analysis using Wireshark. Identified mul
 - `README.docs` 
 - `screenshot.png`
 
-                                                                       
+## 📌 Wireshark - File Captured  output
+
+<img width="1919" height="1030" alt="Screenshot 2025-08-11 115704" src="https://github.com/user-attachments/assets/349236d5-9d45-4ab2-b708-2be758ccdcc8" />
+
+## 📌 Screenshot – ICMP Ping Command Output                      
+<img width="1919" height="1029" alt="Screenshot 2025-08-11 113541" src="https://github.com/user-attachments/assets/8a2c6986-694a-48d1-abc5-0ec80f3069d0" />
 
 
 
