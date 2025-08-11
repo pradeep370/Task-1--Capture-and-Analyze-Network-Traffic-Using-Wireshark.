@@ -1,0 +1,118 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Task 5 — Wireshark Network Traffic Capture and Analysis</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; color: #111; }
+    h1, h2 { color: #0b5394; }
+    pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
+    .section { margin-bottom: 18px; }
+    .screenshot { border: 1px solid #ddd; padding: 8px; display: inline-block; }
+    .small { font-size: 0.9em; color: #555; }
+  </style>
+</head>
+<body>
+  <h1>Task 5 — Wireshark Network Traffic Capture and Analysis</h1>
+  <p class="small"><strong>Date:</strong> 11 August 2025 &nbsp;|&nbsp; <strong>Submitted by:</strong> PRADEEP S</p>
+
+  <div class="section">
+    <h2>Objective</h2>
+    <p>To capture live network traffic using Wireshark, analyze the captured packets to identify common protocols such as DNS, HTTP, TCP, and ICMP, and understand their roles in network communication.</p>
+  </div>
+
+  <div class="section">
+    <h2>Tools Used</h2>
+    <ul>
+      <li>Wireshark — For capturing and analyzing network packets.</li>
+      <li>Command Prompt (ping command) — To generate ICMP traffic for analysis.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Steps Performed</h2>
+    <ol>
+      <li>Installed and launched Wireshark.</li>
+      <li>Selected the active network interface (Wi‑Fi).</li>
+      <li>Started packet capture in Wireshark.</li>
+      <li>Ran <code>ping google.com</code> in Command Prompt to generate ICMP traffic.</li>
+      <li>Visited a website in a browser to create HTTP/DNS traffic.</li>
+      <li>Stopped the capture after about one minute.</li>
+      <li>Applied protocol filters in Wireshark (e.g., <code>dns</code>, <code>tcp</code>, <code>http</code>, <code>icmp</code>).</li>
+      <li>Saved the capture file as <code>task5_capture.pcapng</code>.</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>Traffic Flow (Simple)</h2>
+    <ol>
+      <li><strong>DNS Lookup:</strong> The computer asks a DNS server to find the IP address of websites (e.g., google.com).</li>
+      <li><strong>TCP Connection:</strong> The computer and server perform a TCP handshake (SYN, SYN-ACK, ACK) to establish a connection.</li>
+      <li><strong>Ping Test (ICMP):</strong> ICMP echo requests and replies are used to check reachability.</li>
+      <li><strong>Other Activity:</strong> Background UDP packets and DNS requests from apps or OS services.</li>
+      <li><strong>HTTP/HTTPS Connection:</strong> After the TCP handshake, an HTTP or HTTPS request is sent and the server responds with data (HTTPS uses TLS encryption).</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>Sample Packets (Representative)</h2>
+    <pre>
+0.000000  Your_IP → DNS_Server    DNS Standard query  A google.com
+0.050000  DNS_Server → Your_IP    DNS Standard query response  A 142.250.x.x
+0.070000  Your_IP → 142.250.x.x   TCP SYN
+0.080000  142.250.x.x → Your_IP   TCP SYN, ACK
+0.090000  Your_IP → 142.250.x.x   TCP ACK
+0.100000  Your_IP → 142.250.x.x   HTTP GET /
+0.120000  142.250.x.x → Your_IP   HTTP 200 OK
+    </pre>
+    <p class="small">Note: timestamps and IPs are representative samples from the capture.</p>
+  </div>
+
+  <div class="section">
+    <h2>Protocols Identified</h2>
+    <ul>
+      <li>DNS — Resolves domain names to IP addresses.</li>
+      <li>TCP — Reliable transport protocol (three-way handshake observed).</li>
+      <li>HTTP / HTTPS (TLS) — Web traffic; TLS handshakes for secure connections.</li>
+      <li>ICMP — Ping requests and replies for connectivity checks.</li>
+      <li>UDP — Background and connectionless traffic.</li>
+      <li>ARP, ICMPv6, IGMP — Local network and multicast management traffic.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Observations</h2>
+    <ul>
+      <li>DNS queries precede web connections for name resolution.</li>
+      <li>TCP handshakes occur before HTTP/HTTPS data transfer.</li>
+      <li>ICMP pings confirm network reachability and show round-trip times.</li>
+      <li>Background UDP traffic and repeated DNS queries likely come from OS or apps.</li>
+      <li>TLS encryption hides HTTP payload contents from packet inspection.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Screenshot — ICMP Ping Command Output</h2>
+    <p class="small">(This screenshot shows the Command Prompt output when running <code>ping google.com</code>.)</p>
+    <div class="screenshot">
+      <!-- If the screenshot file exists, it will display when opened locally -->
+      <img src="Screenshot 2025-08-11 115704.png" alt="Screenshot – ICMP Ping Command Output" style="max-width:700px; height:auto; display:block;">
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Files Included</h2>
+    <ul>
+      <li><code>task5_capture.pcapng</code> — Packet capture file.</li>
+      <li><code>Screenshot 2025-08-11 115704.png</code> — Command Prompt ping screenshot.</li>
+      <li><code>task5_report.html</code> — This HTML report.</li>
+    </ul>
+  </div>
+
+  <footer class="small">
+    <p>Prepared by PRADEEP S — Task 5 Wireshark Capture and Analysis.</p>
+  </footer>
+</body>
+</html>
